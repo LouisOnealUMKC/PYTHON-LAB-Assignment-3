@@ -1,0 +1,75 @@
+## CS 101 Lab
+## Program 3
+## Louis ONeal
+## Locbf@umsystem.edu
+
+#Initialize global variables
+Remainder3 = 0
+Remainder5 = 0
+Remainder7 = 0
+Guess = 0
+
+#main program
+def FlarsheimGuesser():
+    print('Please think of a number between and including 1 and 100')
+
+    Remainder3 = AskRemainder3()
+    Remainder5 = AskRemainder5()
+    Remainder7 = AskRemainder7()
+    Guess = FindGuess(Remainder3,Remainder5,Remainder7)
+    print('Your number was {}'.format(Guess))
+    print('How amazing is that?')
+    PlayAgain()
+
+
+def AskRemainder3():
+    Remainder3 = int(input('What is the remainder when your number is divided by 3?'))
+    # Error Handling : check if value is within proper range (0 to 3)
+    if(Remainder3 < 0):
+        print('The value entered must be greater than 0')
+        AskRemainder3()
+    if(Remainder3 >= 3):
+        print('The value entered must be less than 3')
+        AskRemainder3()
+    return(Remainder3)
+
+def AskRemainder5():
+    Remainder5 = int(input('What is the remainder when your number is divided by 5?'))
+    # Error Handling : check if value is within proper range (0 to 5)
+    if(Remainder5 < 0):
+        print('The value entered must be greater than 0')
+        AskRemainder5()
+    if(Remainder5 >= 5):
+        print('The value entered must be less than 5')
+        AskRemainder5()
+    return(Remainder5)
+
+def AskRemainder7():
+    Remainder7 = int(input('What is the remainder when your number is divided by 7?'))
+    # Error Handling : check if value is within proper range (0 to 7)
+    if(Remainder7 < 0):
+        print('The value entered must be greater than 0')
+        AskRemainder7()
+    if(Remainder7 >= 7):
+        print('The value entered must be less than 7')
+        AskRemainder7()
+    return(Remainder7)
+
+def FindGuess(three,five,seven):
+    for i in range(1,101):
+        if (i % 3 == three) and (i % 5 == five) and (i % 7 == seven):
+            return i
+
+def PlayAgain():
+    YesNo = input('Do you want to play again? Y to continue, N to quit  ==> n')
+    if(YesNo.upper() == 'Y'):
+        FlarsheimGuesser()
+    elif(YesNo.upper() == 'N'):
+        quit()
+    # Error Handling : If value entered is not Y or N, ask again
+    elif(YesNo.upper() != 'Y' or 'N'):
+        print('Please enter Y or N')
+        PlayAgain()
+
+
+FlarsheimGuesser()
